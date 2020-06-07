@@ -1,0 +1,36 @@
+<header>
+  <div class="container h-100">
+    <div class="header-content">
+      <div class="header-column">
+        <div *ngIf="currentPage == 'movieList'; else returnButton">
+          <mat-form-field class="mr-3">
+            <mat-label>Tür Seçiniz</mat-label>
+            <mat-select [(value)]="filtertype" (selectionChange)="onFilter($event)">
+              <mat-option value="all">Tümü</mat-option>
+              <mat-option value="film">Filmler</mat-option>
+              <mat-option value="series">Diziler</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Sırala</mat-label>
+            <mat-select [(value)]="sortingType" (selectionChange)="onSort($event)">
+              <mat-option value="desc">Puana Göre (Azalan)</mat-option>
+              <mat-option value="asc">Puana Göre (Artan)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <ng-template #returnButton>
+          <button mat-raised-button [color]="selectedTheme$ | async" [routerLink]="['/movie-list']">
+            <mat-icon>chevron_left</mat-icon> Listeye Dön
+          </button>
+        </ng-template>
+      </div>
+      <div class="header-column"> <h1 class="header-title"> Case Study</h1></div>
+      <div class="header-column text-right" *ngIf="currentPage == 'movieList'">
+        <button mat-raised-button [color]="selectedTheme$ | async" [routerLink]="['/movie-add']">
+          <mat-icon>add</mat-icon> Yeni Kayıt
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

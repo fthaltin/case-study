@@ -1,0 +1,21 @@
+<div class="settings" #settings>
+  <div class="settings-toggler" (click)="toggle()">
+    <mat-icon>settings</mat-icon>
+  </div>
+  <div class="settings-content">
+    <div class="text-center">
+      <div class="mb-1">Tema Rengi Seçiniz</div>
+      <div class="select-buttons">
+        <button mat-mini-fab color="primary" class="mr-1" (click)="setAsDefaultTheme('primary')">
+          <mat-icon *ngIf="selectedTheme == 'primary'">check</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" class="mr-1" (click)="setAsDefaultTheme('accent')">
+          <mat-icon *ngIf="selectedTheme == 'accent'">check</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" (click)="setAsDefaultTheme('warn')">
+          <mat-icon *ngIf="selectedTheme == 'warn'">check</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

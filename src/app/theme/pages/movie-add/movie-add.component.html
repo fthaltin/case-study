@@ -1,0 +1,43 @@
+<div class="text-center">
+  <form [formGroup]="movieForm" (submit)="onSubmit()">
+    <mat-radio-group aria-label="Tür Seçiniz" formControlName="type" [color]="selectedTheme$ | async">
+      <mat-radio-button value="film" class="mr-3">Film</mat-radio-button>
+      <mat-radio-button value="series">Dizi</mat-radio-button>
+      <mat-error *ngIf="submitted && movieForm.controls['type'].hasError('required')">
+        Lütfen tür seçiniz
+      </mat-error>
+    </mat-radio-group>
+    <br>
+    <mat-form-field appearance="fill" class="mt-3 mb-1">
+      <mat-label>Film/Dizi İsmi</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="movieForm.controls['name'].hasError('required')">
+        İsim gereklidir
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="mb-1">
+      <mat-label>Puanı</mat-label>
+      <input matInput formControlName="rate" type="number">
+      <mat-error *ngIf="movieForm.controls['rate'].hasError('required')">
+        Puan alanı gereklidir
+      </mat-error>
+      <mat-error *ngIf="movieForm.controls['rate'].hasError('max')">
+        En fazla 10 girebilirsiniz
+      </mat-error>
+      <mat-error *ngIf="movieForm.controls['rate'].hasError('min')">
+        En az 0 girebilirsiniz
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Yayınlanma Yılı</mat-label>
+      <input matInput formControlName="year" type="number">
+    </mat-form-field>
+    <div class="mt-3">
+      <button mat-raised-button [color]="selectedTheme$ | async" type="submit">
+        Kaydet
+      </button>
+    </div>
+  </form>
+</div>

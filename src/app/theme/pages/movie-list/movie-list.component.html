@@ -1,0 +1,24 @@
+<div class="showcase" *ngFor="let item of movieList; trackBy: trackMethod">
+  <div class="showcase-column movie-name">
+    <span class="movie-text">{{item.name}} {{item.year ? '(' + item.year + ')' : ''}} </span> 
+    <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon" (click)="removeMovie(item)" class="remove-button ml-3">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div class="showcase-column movie-rate"><mat-icon>star</mat-icon> <span> {{item.rate}} </span></div>
+  <div class="showcase-column movie-rate-change">
+    <div>Puan Ver</div>
+    <div>
+      <mat-icon>keyboard_arrow_up</mat-icon>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+  </div>
+</div>
+
+<mat-paginator 
+  [length]="movieList?.length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
